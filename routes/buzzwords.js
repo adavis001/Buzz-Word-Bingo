@@ -4,14 +4,17 @@ const router = express.Router();
 
 
 let buzziestWords = [];
+let justTheWords = {
+  'buzzwords': []
+};
 
 router.route('/')
   .get(function(req, res) {
-    res.send(`Got Buzzword `);
+    res.json(justTheWords);
   })
   .post(function(req, res) {
   	//console.log(req.body);
-    buzziestWords.push(req.body);
+    justTheWords.buzzwords.push(req.body.buzzword);
     console.log(buzziestWords);
     res.send(`Buzzword added`);
   })
